@@ -1,0 +1,15 @@
+{
+    "dataset": "MNIST (4-digit: 0, 1, 2, 3)",
+    "train_samples": 4000,
+    "test_samples": 1000,
+    "input_features": 4,
+    "optical_architecture": "Clements Mesh U (6 MZIs) -> Sigma (VOAs) -> Clements Mesh V_dagger (6 MZIs)",
+    "ideal_software_test_acc": 76.3,
+    "uncalibrated_hardware_test_acc": 73.39,
+    "uncalibrated_hardware_std": 1.18,
+    "hat_hardware_test_acc": 73.95,
+    "hat_hardware_std": 0.74,
+    "performance_gain_HAT_pct": 0.56,
+    "optical_latency_ps": 7.0,
+    "optical_energy_fJ_per_mac": 0.85
+}

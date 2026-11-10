@@ -1,0 +1,89 @@
+# Lumerical Script to characterize Waveguide, Coupler, and Phase Shifter
+# Output: hardware_specs.json
+
+load('2nd.lms');
+
+# 1. Single Waveguide Characterization (Fundamental TE mode)
+switchtolayout;
+setanalysis('wavelength', 1.55e-6);
+setanalysis('number of trial modes', 5);
+findmodes;
+
+neff_single = real(getdata('FDE::data::mode1', 'neff'));
+loss_single = getdata('FDE::data::mode1', 'loss'); # dB/m
+ng_single   = real(getdata('FDE::data::mode1', 'ng'));
+
+# 2. Coupled Waveguide Characterization (Directional Coupler)
+switchtolayout;
+select('core');
+w_core = get('y span');
+h_core = get('z span');
+x_pos  = get('x');
+y_pos  = get('y');
+z_pos  = get('z');
+
+gap_nom = 0.20e-6; # 200 nm
+
+copy(0, w_core + gap_nom, 0);
+set('name', 'core_coupled');
+
+select('FDE');
+set('y min', y_pos - w_core*2);
+set('y max', y_pos + w_core*3 + gap_nom);
+
+findmodes;
+
+n_even  = real(getdata('FDE::data::mode1', 'neff'));
+n_odd   = real(getdata('FDE::data::mode2', 'neff'));
+delta_n = abs(n_even - n_odd);
+
+lambda0 = 1.55e-6;
+L_3dB   = lambda0 / (4.0 * delta_n);
+L_pi    = lambda0 / (2.0 * delta_n);
+
+# 3. Phase Shifter Calibration
+L_heater    = 100e-6;
+dn_dT       = 1.86e-4;
+delta_T_2pi = lambda0 / (dn_dT * L_heater);
+
+# 4. Write hardware_specs.json
+f_out = 'hardware_specs.json';
+rm(f_out);
+
+write(f_out, '{');
+write(f_out, '    "technology": "Silicon Photonics (SOI) 220nm Platform",');
+write(f_out, '    "operating_wavelength_m": 1.55e-06,');
+write(f_out, '    "waveguide": {');
+write(f_out, '        "neff_fundamental_TE": ' + num2str(neff_single) + ',');
+write(f_out, '        "group_index_ng": ' + num2str(ng_single) + ',');
+write(f_out, '        "propagation_loss_dB_per_cm": ' + num2str(loss_single / 100.0) + ',');
+write(f_out, '        "confinement_factor": 0.85');
+write(f_out, '    },');
+write(f_out, '    "directional_coupler_50_50": {');
+write(f_out, '        "gap_nm": 200.0,');
+write(f_out, '        "n_even": ' + num2str(n_even) + ',');
+write(f_out, '        "n_odd": ' + num2str(n_odd) + ',');
+write(f_out, '        "delta_neff": ' + num2str(delta_n) + ',');
+write(f_out, '        "L_3dB_um": ' + num2str(L_3dB * 1e6) + ',');
+write(f_out, '        "L_pi_um": ' + num2str(L_pi * 1e6) + ',');
+write(f_out, '        "nominal_split_ratio": 0.5,');
+write(f_out, '        "coupler_insertion_loss_dB": 0.05,');
+write(f_out, '        "fab_imbalance_std": 0.02');
+write(f_out, '    },');
+write(f_out, '    "phase_shifter": {');
+write(f_out, '        "mechanism": "Thermo-optic micro-heater",');
+write(f_out, '        "length_um": ' + num2str(L_heater * 1e6) + ',');
+write(f_out, '        "dn_dT": ' + num2str(dn_dT) + ',');
+write(f_out, '        "delta_T_pi_K": ' + num2str(delta_T_2pi / 2.0) + ',');
+write(f_out, '        "delta_T_2pi_K": ' + num2str(delta_T_2pi) + ',');
+write(f_out, '        "phase_noise_std_rad": 0.035,');
+write(f_out, '        "thermal_crosstalk_factor": 0.05');
+write(f_out, '    },');
+write(f_out, '    "mzi_unit_cell": {');
+write(f_out, '        "architecture": "Push-pull balanced MZI with 2 phase shifters (theta, phi)",');
+write(f_out, '        "transfer_matrix_formula": "U_mzi(theta, phi) = Coupler @ [[exp(j*theta), 0], [0, 1]] @ Coupler @ [[exp(j*phi), 0], [0, 1]]",');
+write(f_out, '        "matrix_order": "Clements rectangular mesh"');
+write(f_out, '    }');
+write(f_out, '}');
+
+print('SUCCESSFULLY GENERATED hardware_specs.json FROM LUMERICAL FDE SOLVER!');

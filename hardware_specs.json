@@ -1,0 +1,37 @@
+{
+    "technology": "Silicon Photonics (SOI) 220nm Platform",
+    "operating_wavelength_m": 1.55e-06,
+    "waveguide": {
+        "neff_fundamental_TE": 2.3505,
+        "group_index_ng": 4.2107,
+        "propagation_loss_dB_per_cm": 0.0,
+        "core_width_nm": 500,
+        "core_height_nm": 220,
+        "confinement_factor": 0.85
+    },
+    "directional_coupler_50_50": {
+        "gap_nm": 200.0,
+        "n_even": 2.3712,
+        "n_odd": 2.3609,
+        "delta_neff": 0.01027,
+        "L_3dB_um": 37.73,
+        "L_pi_um": 75.45,
+        "nominal_split_ratio": 0.5,
+        "coupler_insertion_loss_dB": 0.05,
+        "fab_imbalance_std": 0.02
+    },
+    "phase_shifter": {
+        "mechanism": "Thermo-optic micro-heater",
+        "length_um": 100.0,
+        "dn_dT": 0.000186,
+        "delta_T_pi_K": 41.7,
+        "delta_T_2pi_K": 83.3,
+        "phase_noise_std_rad": 0.035,
+        "thermal_crosstalk_factor": 0.05
+    },
+    "mzi_unit_cell": {
+        "architecture": "Push-pull balanced MZI with 2 phase shifters (theta, phi)",
+        "transfer_matrix_formula": "U_mzi(theta, phi) = Coupler @ [[exp(j*theta), 0], [0, 1]] @ Coupler @ [[exp(j*phi), 0], [0, 1]]",
+        "matrix_order": "Clements rectangular mesh"
+    }
+}

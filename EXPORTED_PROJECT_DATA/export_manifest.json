@@ -1,0 +1,74 @@
+[
+    {
+        "file": "hardware_database.json",
+        "size_KB": 4.1
+    },
+    {
+        "file": "hardware_specs.json",
+        "size_KB": 1.2
+    },
+    {
+        "file": "coupler_gap_sweep.csv",
+        "size_KB": 0.3
+    },
+    {
+        "file": "compiled_optical_layer.json",
+        "size_KB": 4.7
+    },
+    {
+        "file": "clements_mesh_4x4.icp",
+        "size_KB": 231.6
+    },
+    {
+        "file": "build_interconnect_mesh.lsf",
+        "size_KB": 3.1
+    },
+    {
+        "file": "interconnect_sparams.json",
+        "size_KB": 0.9
+    },
+    {
+        "file": "mnist_benchmark_results.json",
+        "size_KB": 0.5
+    },
+    {
+        "file": "results_visualizations.png",
+        "size_KB": 575.6
+    },
+    {
+        "file": "interconnect_simulation_results.png",
+        "size_KB": 520.3
+    },
+    {
+        "file": "mnist_photonic_benchmark.png",
+        "size_KB": 738.5
+    },
+    {
+        "file": "2nd.lms",
+        "size_KB": 451.8
+    },
+    {
+        "file": "step1_hardware_sweeps.py",
+        "size_KB": 7.0
+    },
+    {
+        "file": "step2_clements_compiler.py",
+        "size_KB": 7.0
+    },
+    {
+        "file": "step3_photonic_neural_network.py",
+        "size_KB": 9.0
+    },
+    {
+        "file": "step4_generate_visualizations.py",
+        "size_KB": 5.1
+    },
+    {
+        "file": "step5_interconnect_circuit.py",
+        "size_KB": 14.1
+    },
+    {
+        "file": "step6_mnist_photonic_benchmark.py",
+        "size_KB": 21.9
+    }
+]

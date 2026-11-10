@@ -1,0 +1,139 @@
+{
+    "platform": "Silicon-on-Insulator (SOI) 220nm",
+    "operating_wavelength_um": 1.55,
+    "waveguide_nominal": {
+        "width_nm": 500,
+        "height_nm": 220,
+        "neff_1550nm": 2.3505,
+        "ng_1550nm": 4.2107,
+        "propagation_loss_dB_per_cm": 0.0,
+        "dispersion_sweep": [
+            {
+                "wavelength_um": 1.5,
+                "neff": 2.40996,
+                "group_index": 4.1768,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.51,
+                "neff": 2.39816,
+                "group_index": 4.1836,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.52,
+                "neff": 2.38631,
+                "group_index": 4.1904,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.53,
+                "neff": 2.37442,
+                "group_index": 4.1972,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.54,
+                "neff": 2.36248,
+                "group_index": 4.2039,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.55,
+                "neff": 2.3505,
+                "group_index": 4.2107,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.56,
+                "neff": 2.33848,
+                "group_index": 4.2173,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.57,
+                "neff": 2.32641,
+                "group_index": 4.2239,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.58,
+                "neff": 2.31431,
+                "group_index": 4.2305,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.59,
+                "neff": 2.30216,
+                "group_index": 4.2369,
+                "loss_dB_per_cm": 0.0
+            },
+            {
+                "wavelength_um": 1.6,
+                "neff": 2.28997,
+                "group_index": 4.2433,
+                "loss_dB_per_cm": 0.0
+            }
+        ]
+    },
+    "directional_coupler": {
+        "nominal_gap_nm": 200.0,
+        "nominal_L_3dB_um": 34.73,
+        "nominal_L_pi_um": 69.47,
+        "gap_sweep": [
+            {
+                "gap_nm": 160.0,
+                "n_even": 2.39747,
+                "n_odd": 2.38439,
+                "delta_n": 0.01308,
+                "L_3dB_um": 29.63,
+                "L_pi_um": 59.26
+            },
+            {
+                "gap_nm": 180.0,
+                "n_even": 2.39888,
+                "n_odd": 2.38682,
+                "delta_n": 0.01207,
+                "L_3dB_um": 32.12,
+                "L_pi_um": 64.23
+            },
+            {
+                "gap_nm": 200.0,
+                "n_even": 2.34469,
+                "n_odd": 2.33353,
+                "delta_n": 0.01116,
+                "L_3dB_um": 34.73,
+                "L_pi_um": 69.47
+            },
+            {
+                "gap_nm": 220.0,
+                "n_even": 2.33797,
+                "n_odd": 2.32829,
+                "delta_n": 0.00968,
+                "L_3dB_um": 40.02,
+                "L_pi_um": 80.04
+            },
+            {
+                "gap_nm": 240.0,
+                "n_even": 2.34333,
+                "n_odd": 2.33428,
+                "delta_n": 0.00905,
+                "L_3dB_um": 42.82,
+                "L_pi_um": 85.65
+            }
+        ],
+        "split_ratio": 0.5,
+        "split_tolerance_std": 0.02,
+        "insertion_loss_dB": 0.05
+    },
+    "phase_shifter": {
+        "type": "Thermo-optic micro-heater",
+        "length_um": 100.0,
+        "delta_T_pi_K": 41.7,
+        "delta_T_2pi_K": 83.3,
+        "tuning_efficiency_mW_per_pi": 20.0,
+        "heater_resistance_ohms": 100.0,
+        "thermal_phase_noise_std_rad": 0.035,
+        "thermal_crosstalk_factor": 0.05
+    }
+}

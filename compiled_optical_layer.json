@@ -1,0 +1,157 @@
+{
+    "matrix_dimension": 4,
+    "singular_values_sigma": [
+        1.5386,
+        1.1677,
+        0.8664,
+        0.2588
+    ],
+    "optical_attenuations_dB": [
+        -3.74,
+        -1.35,
+        1.25,
+        11.74
+    ],
+    "mzi_mesh_U": [
+        {
+            "layer": 1,
+            "channel_m": 2,
+            "channel_n": 3,
+            "theta_rad": 2.052854932571787,
+            "phi_rad": 3.141592653589793,
+            "heater_theta_delta_T_C": 27.25,
+            "heater_phi_delta_T_C": 41.7,
+            "heater_theta_voltage_V": 1.143,
+            "heater_phi_voltage_V": 1.414
+        },
+        {
+            "layer": 2,
+            "channel_m": 1,
+            "channel_n": 2,
+            "theta_rad": 1.653096305478866,
+            "phi_rad": 3.141592653589793,
+            "heater_theta_delta_T_C": 21.94,
+            "heater_phi_delta_T_C": 41.7,
+            "heater_theta_voltage_V": 1.026,
+            "heater_phi_voltage_V": 1.414
+        },
+        {
+            "layer": 2,
+            "channel_m": 2,
+            "channel_n": 3,
+            "theta_rad": 3.0200817524991357,
+            "phi_rad": 0.0,
+            "heater_theta_delta_T_C": 40.09,
+            "heater_phi_delta_T_C": 0.0,
+            "heater_theta_voltage_V": 1.387,
+            "heater_phi_voltage_V": 0.0
+        },
+        {
+            "layer": 3,
+            "channel_m": 0,
+            "channel_n": 1,
+            "theta_rad": 0.7349943995691457,
+            "phi_rad": 3.141592653589793,
+            "heater_theta_delta_T_C": 9.76,
+            "heater_phi_delta_T_C": 41.7,
+            "heater_theta_voltage_V": 0.684,
+            "heater_phi_voltage_V": 1.414
+        },
+        {
+            "layer": 3,
+            "channel_m": 1,
+            "channel_n": 2,
+            "theta_rad": 0.9621949871679395,
+            "phi_rad": 6.283185307179586,
+            "heater_theta_delta_T_C": 12.77,
+            "heater_phi_delta_T_C": 83.4,
+            "heater_theta_voltage_V": 0.783,
+            "heater_phi_voltage_V": 2.0
+        },
+        {
+            "layer": 3,
+            "channel_m": 2,
+            "channel_n": 3,
+            "theta_rad": 0.1990561286456195,
+            "phi_rad": 3.1415926535897936,
+            "heater_theta_delta_T_C": 2.64,
+            "heater_phi_delta_T_C": 41.7,
+            "heater_theta_voltage_V": 0.356,
+            "heater_phi_voltage_V": 1.414
+        }
+    ],
+    "mzi_mesh_V_dagger": [
+        {
+            "layer": 1,
+            "channel_m": 2,
+            "channel_n": 3,
+            "theta_rad": 2.26113215149113,
+            "phi_rad": 0.0,
+            "heater_theta_delta_T_C": 30.01,
+            "heater_phi_delta_T_C": 0.0,
+            "heater_theta_voltage_V": 1.2,
+            "heater_phi_voltage_V": 0.0
+        },
+        {
+            "layer": 2,
+            "channel_m": 1,
+            "channel_n": 2,
+            "theta_rad": 2.6542566575171027,
+            "phi_rad": 3.141592653589793,
+            "heater_theta_delta_T_C": 35.23,
+            "heater_phi_delta_T_C": 41.7,
+            "heater_theta_voltage_V": 1.3,
+            "heater_phi_voltage_V": 1.414
+        },
+        {
+            "layer": 2,
+            "channel_m": 2,
+            "channel_n": 3,
+            "theta_rad": 2.88836426910653,
+            "phi_rad": 3.141592653589793,
+            "heater_theta_delta_T_C": 38.34,
+            "heater_phi_delta_T_C": 41.7,
+            "heater_theta_voltage_V": 1.356,
+            "heater_phi_voltage_V": 1.414
+        },
+        {
+            "layer": 3,
+            "channel_m": 0,
+            "channel_n": 1,
+            "theta_rad": 1.411998525363231,
+            "phi_rad": 3.141592653589793,
+            "heater_theta_delta_T_C": 18.74,
+            "heater_phi_delta_T_C": 41.7,
+            "heater_theta_voltage_V": 0.948,
+            "heater_phi_voltage_V": 1.414
+        },
+        {
+            "layer": 3,
+            "channel_m": 1,
+            "channel_n": 2,
+            "theta_rad": 1.4926272273146153,
+            "phi_rad": 0.0,
+            "heater_theta_delta_T_C": 19.81,
+            "heater_phi_delta_T_C": 0.0,
+            "heater_theta_voltage_V": 0.975,
+            "heater_phi_voltage_V": 0.0
+        },
+        {
+            "layer": 3,
+            "channel_m": 2,
+            "channel_n": 3,
+            "theta_rad": 1.7451172253221552,
+            "phi_rad": 0.0,
+            "heater_theta_delta_T_C": 23.16,
+            "heater_phi_delta_T_C": 0.0,
+            "heater_theta_voltage_V": 1.054,
+            "heater_phi_voltage_V": 0.0
+        }
+    ],
+    "output_phase_shifts_rad": [
+        0.0,
+        3.1416,
+        6.2832,
+        6.2832
+    ]
+}

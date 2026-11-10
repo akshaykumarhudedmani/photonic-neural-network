@@ -1,0 +1,41 @@
+# Python & Environment
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Large Datasets (Auto-downloaded by script)
+mnist_data/
+
+# OS and IDE files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary diagnostics & local network scripts
+check_license_servers.py
+find_more.py
+find_objs.py
+fix_hosts.ps1
+launch_*.bat
+probe_subnet.py
+query_library.py
+test_*.py
+test_*.bat
+test_*.ps1
+update_license_server.bat
+debug_objs.txt
+fde_test.txt
+model_tree.txt
+test_script.lsf
+backup_for_lum_interconnect_gui*
+test_cad_view.png
+
