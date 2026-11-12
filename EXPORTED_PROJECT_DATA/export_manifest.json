@@ -36,10 +36,6 @@
         "size_KB": 0.5
     },
     {
-        "file": "high_accuracy_benchmark_results.json",
-        "size_KB": 0.7
-    },
-    {
         "file": "interconnect_simulation_results.png",
         "size_KB": 520.3
     },
@@ -86,9 +82,5 @@
     {
         "file": "step6_mnist_photonic_benchmark.py",
         "size_KB": 22.1
-    },
-    {
-        "file": "step7_high_accuracy_photonic_cnn.py",
-        "size_KB": 11.3
     }
 ]

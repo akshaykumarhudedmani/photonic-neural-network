@@ -62,7 +62,6 @@ files_to_export = [
     'build_interconnect_mesh.lsf',
     'interconnect_sparams.json',
     'mnist_benchmark_results.json',
-    'high_accuracy_benchmark_results.json',
     'interconnect_simulation_results.png',
     'mnist_photonic_benchmark.png',
     'single_waveguide_500x220.lms',
@@ -74,8 +73,7 @@ files_to_export = [
     'step3_photonic_neural_network.py',
     'step4_generate_visualizations.py',
     'step5_interconnect_circuit.py',
-    'step6_mnist_photonic_benchmark.py',
-    'step7_high_accuracy_photonic_cnn.py'
+    'step6_mnist_photonic_benchmark.py'
 ]
 
 print("\n2. Archiving all core project files into EXPORTED_PROJECT_DATA...")

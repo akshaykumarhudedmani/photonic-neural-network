@@ -19,23 +19,44 @@ Electronic deep learning accelerators (GPUs, TPUs) are fundamentally constrained
 
 This repository presents an **end-to-end, physics-calibrated hardware-software co-design of a Silicon Photonic Neural Network (PNN)**. The system bridges microscopic Maxwell electromagnetics, circuit-level S-parameter synthesis, and a differentiable PyTorch machine learning engine:
 
-1. **Electromagnetic Level (Ansys Lumerical MODE)**: Solved first-principles Maxwell Finite-Difference Eigenmodes (FDE) for a $500\text{ nm} \times 220\text{ nm}$ SOI strip waveguide ($n_{\text{eff}} = 2.3505$, $n_g = 4.2107$) and characterized $3\text{ dB}$ directional coupler supermodes ($L_{3\text{dB}} = 34.73\ \mu\text{m}$).
-2. **Circuit Level (Ansys Lumerical INTERCONNECT)**: Synthesized a 4-channel Clements rectangular optical mesh consisting of 6 Mach-Zehnder Interferometers (MZIs). Exported multi-wavelength Touchstone S-parameters (`clements_mesh_4x4.s4p`) achieving **$> 99.8\%$ matrix fidelity across the entire telecom C-band** ($1530\text{ nm} - 1570\text{ nm}$).
+1. **Electromagnetic Level (Ansys Lumerical MODE)**: Solved first-principles Maxwell Finite-Difference Eigenmodes (FDE) for a $500\text{ nm} \times 220\text{ nm}$ SOI strip waveguide (`single_waveguide_500x220.lms`) to determine $n_{\text{eff}} = 2.3505$ and $n_g = 4.2107$. Characterized $3\text{ dB}$ directional coupler supermodes (`directional_coupler_50_50.lms`) to derive exact $50:50$ power splitting length ($L_{3\text{dB}} = 34.73\ \mu\text{m}$).
+2. **Circuit Level (Ansys Lumerical INTERCONNECT)**: Synthesized a 4-channel Clements rectangular optical mesh (`clements_mesh_4x4.icp`) consisting of 6 Mach-Zehnder Interferometers (MZIs). Exported multi-wavelength Touchstone S-parameters (`clements_mesh_4x4.s4p`) achieving **$> 99.8\%$ matrix fidelity across the entire telecom C-band** ($1530\text{ nm} - 1570\text{ nm}$).
 3. **Machine Learning Level (PyTorch HAT Engine)**: Implemented Singular Value Decomposition ($W = U \Sigma V^\dagger$) decomposing neural weight matrices into physical phase shifter heater voltages ($V = \sqrt{PR}$). Introduced **Hardware-Aware Training (HAT)** to stabilize against thermal crosstalk, micro-heater phase noise ($\sigma = 0.035\text{ rad}$), DAC quantization, and photodetector shot noise.
-4. **Validation Benchmark**: Benchmarked on the official Yann LeCun MNIST dataset. HAT achieved **$73.95\% \pm 0.74\%$ accuracy**, demonstrating a **$37.3\%$ reduction in performance variance** under fabrication and thermal drift, with an optical time-of-flight latency of **$7.0\text{ ps}$** and compute energy dissipation under **$0.85\text{ fJ/MAC}$** ($>1000\times$ lower than modern electronic GPUs).
+4. **Validation Benchmark**: Benchmarked strictly on the **pure optical capacity** of the $4 \times 4$ silicon mesh using the official Yann LeCun MNIST dataset. HAT achieved **$73.95\% \pm 0.74\%$ accuracy**, demonstrating a **$37.3\%$ reduction in performance variance** under fabrication and thermal drift, with an optical time-of-flight latency of **$7.0\text{ ps}$** and compute energy dissipation under **$0.85\text{ fJ/MAC}$** ($>1000\times$ lower than modern electronic GPUs).
 
 ---
 
 ## 📊 Summary of Experimental & Benchmark Results
 
-| Metric / Parameter | Classical Digital GPU | Single-Layer Optical Unitary Mesh (PCA-4) | **Deep Photonic CNN (PCNN Optical Core - Ours)** | Physical / Practical Benefit |
+| Metric / Parameter | Classical Digital GPU | Uncalibrated Noisy Chip | **Hardware-Aware Trained (HAT) PNN (Ours)** | Physical / Practical Benefit |
 | :--- | :---: | :---: | :---: | :--- |
-| **MNIST Test Accuracy** | $76.30\%$ *(linear baseline)* | $73.95\% \pm 0.74\%$ | **$99.00\%$ (Verified)** | **$>99\%$ accuracy without overfitting** |
-| **Inference Latency** | $\sim 10 - 100\text{ ns}$ | $7.0\text{ ps}$ | **$7.0\text{ ps}$** (optical core) | Light speed propagation through $420\ \mu\text{m}$ chip |
+| **MNIST Test Accuracy (4-Class)** | $76.30\%$ *(ideal baseline)* | $73.39\% \pm 1.18\%$ | **$73.95\% \pm 0.74\%$** | **$37.3\%$ variance reduction** under thermal drift |
+| **Inference Latency** | $\sim 10 - 100\text{ ns}$ | $7.0\text{ ps}$ | **$7.0\text{ ps}$** | Light speed propagation through $420\ \mu\text{m}$ chip |
 | **Compute Energy / MAC** | $\sim 10 - 100\text{ pJ/MAC}$ | $< 0.85\text{ fJ/MAC}$ | **$< 0.85\text{ fJ/MAC}$** | **$> 1000\times$ energy reduction** |
 | **C-Band Matrix Fidelity** | N/A | $99.80\% - 100.00\%$ | **$> 99.93\%$ mean** | Robust broadband telecom C-band ($1530-1570\text{ nm}$) |
 | **Heater Power ($P_\pi$)** | N/A | $18.42\text{ mW}$ | **$18.42\text{ mW}$** | Standard thermo-optic tuning on titanium micro-heaters |
 | **Directional Coupler $L_{3\text{dB}}$** | N/A | $34.73\ \mu\text{m}$ | **$34.73\ \mu\text{m}$** | $50:50$ power split at gap $= 200\text{ nm}$ |
+
+---
+
+## 🔍 Scientific Rigor: Why ~74% Accuracy on a 4x4 Linear Mesh is Valid and Expected
+
+A critical point of academic rigor in neuromorphic photonics is understanding the **fundamental physical bounds** of linear optical circuits.
+
+### 1. Comparison with MIT Landmark Literature
+In the foundational paper that pioneered coherent nanophotonic computing (**Shen et al., *Nature Photonics* 2017**, *"Deep learning with coherent nanophotonic circuits"*, MIT):
+* MIT fabricated a physical $4 \times 4$ Clements optical mesh (56 phase shifters).
+* Evaluated on a 4-class vowel recognition dataset, their unassisted experimental optical mesh achieved **$76.7\%$ accuracy**.
+* Our physics-calibrated silicon $4 \times 4$ mesh achieves **$76.30\%$ ideal baseline / $73.95\%$ noisy hardware accuracy** on 4-digit MNIST, perfectly aligning with MIT's experimental findings.
+
+### 2. Why a Pure 4x4 Linear Optical Mesh Caps at ~76%
+1. **Spatial Mode Dimensionality**: A $4 \times 4$ optical processor physically supports exactly 4 spatial optical waveguide channels. Compressing a $28 \times 28 = 784$ pixel image down to 4 spatial features (via PCA) inevitably discards high-frequency spatial loops, strokes, and topological features.
+2. **Absence of All-Optical Non-Linearity**: A passive Clements MZI mesh performs a **purely linear unitary transformation** ($y = Wx$). Without non-linear optical activation functions (e.g., optical bistability, saturable absorbers), a single linear matrix cannot solve non-linear classification manifolds.
+
+> **Methodological Integrity**:  
+> In neuromorphic photonics literature, a common red flag is artificially claiming $>99\%$ accuracy by wrapping a standard digital PyTorch CNN (`nn.Conv2d`, `nn.ReLU`, `nn.MaxPool2d`) around a simulated noisy linear layer. In such architectures, **$99\%$ of the compute and all feature extraction is performed by digital electronics**, not photonics.  
+> 
+> This repository strictly evaluates the **pure physical capability of the silicon photonic chip itself** in [`step6_mnist_photonic_benchmark.py`](step6_mnist_photonic_benchmark.py). Every matrix operation is executed entirely by the optical mesh via waveguide interference, providing a genuine baseline for hardware-aware training (HAT).
 
 ---
 
@@ -44,12 +65,14 @@ This repository presents an **end-to-end, physics-calibrated hardware-software c
 ```
                                       PHYSICAL LAYER
   [ Ansys Lumerical MODE (FDE) ]  -->  Solves Maxwell's Curl Equations:
-                                       Strip Waveguide: w=500nm, h=220nm -> neff = 2.3505, ng = 4.2107
-                                       Supermode Splitter: gap=200nm -> L_3dB = 34.73 um
+                                       Strip Waveguide (single_waveguide_500x220.lms): w=500nm, h=220nm 
+                                       -> neff = 2.3505, ng = 4.2107
+                                       Supermode Splitter (directional_coupler_50_50.lms): gap=200nm 
+                                       -> L_3dB = 34.73 um
                                               |
                                               v
                                       CIRCUIT LAYER
-  [ Ansys INTERCONNECT Engine ]   -->  4x4 Clements Rectangular Optical Mesh:
+  [ Ansys INTERCONNECT Engine ]   -->  4x4 Clements Rectangular Optical Mesh (clements_mesh_4x4.icp):
                                        6 Mach-Zehnder Interferometers (MZIs) + Variable Attenuators (Sigma)
                                        Exports Universal Touchstone S-Parameter File (clements_mesh_4x4.s4p)
                                        C-Band Fidelity: > 99.8% across 1530 nm - 1570 nm
@@ -129,17 +152,6 @@ This repository presents an **end-to-end, physics-calibrated hardware-software c
 
 ---
 
-### Figure 6: Deep Photonic Convolutional Neural Network (99.00% Verified Accuracy)
-*Generated via PyTorch Photonic Engine (`step7_high_accuracy_photonic_cnn.py`)*
-
-![High-Accuracy Photonic CNN Benchmark](SOFTWARE_SCREENSHOTS_AND_OUTPUTS/06_high_accuracy_photonic_cnn_benchmark.png)
-
-* **(a) Loss Curve**: Smooth convergence from $53.53$ to $1.23$ across 15 epochs without gradient explosion or divergence.
-* **(b) Test Accuracy**: Reaches and stabilizes at **$99.00\%$ on 1,500 unseen test samples** under active continuous thermal phase jitter ($\sigma = 0.02\text{ rad}$) on every MZI.
-* **(c) Confusion Matrix**: Near-perfect diagonal classification across all 4 digits with zero overfitting (regularized with Dropout, BatchNorm, and Cosine Annealing).
-
----
-
 ## 📐 Mathematical Formulation
 
 ### 1. Optical Transfer Matrix of a Mach-Zehnder Interferometer (MZI)
@@ -162,6 +174,7 @@ $$P_\pi = \frac{\lambda \cdot k \cdot A}{\frac{dn}{dT} \cdot L} = 18.42\text{ mW
 ## 📂 Repository File Structure
 
 ```
+photonic-neural-network/
 ├── EXPORTED_PROJECT_DATA/            # Universal self-contained data archive (Zero-License)
 │   ├── clements_mesh_4x4.s4p         # 4-Port Touchstone S-parameter file (ADS / Cadence / Python)
 │   ├── raw_fde_waveguide_fields.npz  # Raw 2D E/H electromagnetic field matrices
@@ -170,8 +183,7 @@ $$P_\pi = \frac{\lambda \cdot k \cdot A}{\frac{dn}{dT} \cdot L} = 18.42\text{ mW
 │   ├── hardware_specs.json           # Extracted core specifications
 │   ├── compiled_optical_layer.json   # Clements MZI angles (theta, phi) & heater voltages
 │   ├── interconnect_sparams.json     # S-parameters across 1500 - 1600 nm
-│   ├── mnist_benchmark_results.json  # PCA-4 linear benchmark metrics
-│   ├── high_accuracy_benchmark_results.json # 99.00% Deep Photonic CNN metrics & confusion matrix
+│   ├── mnist_benchmark_results.json  # Full numerical accuracy, latency, and energy metrics
 │   ├── waveguide_dispersion_sweep.csv# Wavelength sweep dispersion table
 │   ├── coupler_gap_sweep.csv         # Supermode gap sweep table
 │   ├── single_waveguide_500x220.lms  # Native Lumerical MODE FDE model (Si 500x220nm strip)
@@ -183,19 +195,24 @@ $$P_\pi = \frac{\lambda \cdot k \cdot A}{\frac{dn}{dT} \cdot L} = 18.42\text{ mW
 │   ├── 02_directional_coupler_supermodes.png
 │   ├── 03_interconnect_circuit_schematic.png
 │   ├── 04_interconnect_transmission_spectra.png
-│   ├── 05_mnist_photonic_neural_network_benchmarks.png
-│   └── 06_high_accuracy_photonic_cnn_benchmark.png
+│   └── 05_mnist_photonic_neural_network_benchmarks.png
 ├── single_waveguide_500x220.lms      # Base single-waveguide cross-section CAD
 ├── directional_coupler_50_50.lms     # 3dB directional coupler CAD
 ├── clements_mesh_4x4.icp             # 4-channel Clements optical mesh circuit
 ├── clements_mesh_4x4.s4p             # 4-port Touchstone S-parameter dataset
+├── waveguide_dispersion_sweep.csv    # Dispersion sweep table
+├── coupler_gap_sweep.csv             # Coupler gap sweep table
+├── hardware_database.json            # Calibrated physical specifications
+├── hardware_specs.json               # Extracted hardware properties
+├── compiled_optical_layer.json       # Clements compiled MZI angles & heater voltages
+├── interconnect_sparams.json         # S-parameters and matrix fidelity
+├── mnist_benchmark_results.json      # MNIST benchmark numbers
 ├── step1_hardware_sweeps.py          # MODE Solutions FDE dispersion & gap characterization
 ├── step2_clements_compiler.py        # Clements SVD decomposition & MZI angle synthesis
 ├── step3_photonic_neural_network.py  # PyTorch optical forward pass & noise simulation
 ├── step4_generate_visualizations.py  # Scientific plotting & telemetry dashboard
 ├── step5_interconnect_circuit.py     # INTERCONNECT automation & S-parameter extraction
-├── step6_mnist_photonic_benchmark.py # Linear optical matrix baseline benchmark
-├── step7_high_accuracy_photonic_cnn.py # Deep Photonic CNN (99.00% verified test accuracy)
+├── step6_mnist_photonic_benchmark.py # End-to-end Pure Optical MNIST benchmark & HAT training
 ├── generate_software_outputs_and_screenshots.py # Master figure generator
 ├── export_all_project_data.py        # Project archiving & Touchstone S4P exporter
 ├── requirements.txt                  # Python dependencies
@@ -218,32 +235,15 @@ cd photonic-neural-network
 pip install -r requirements.txt
 ```
 
-### 3. Run the High-Accuracy Deep Photonic CNN (99.00% Test Accuracy)
-```bash
-python step7_high_accuracy_photonic_cnn.py
-```
-
-### 4. Run the Linear Unitary Optical Mesh Baseline
+### 3. Run the Standalone Pure Photonic AI Benchmark (No Ansys License Required)
+The PyTorch neural engine reads the pre-calibrated physical Touchstone files and hardware database, allowing full reproduction of all benchmarks on any PC:
 ```bash
 python step6_mnist_photonic_benchmark.py
 ```
 
-### 5. Inspect Hardware Data & S-Parameters in Python (No License Needed)
+### 4. Inspect Hardware Data & S-Parameters in Python
 ```python
 import numpy as np
-import json
-
-# Load raw electromagnetic field matrices
-fde_data = np.load('EXPORTED_PROJECT_DATA/raw_fde_waveguide_fields.npz')
-print("FDE Effective Index:", fde_data['neff'])
-print("E-field Matrix Shape:", fde_data['E'].shape)
-
-# Load compiled optical chip configuration
-with open('EXPORTED_PROJECT_DATA/compiled_optical_layer.json') as f:
-    chip = json.load(f)
-print("Mesh Architecture:", chip['architecture'])
-print("MZI 1 Heater Voltage:", chip['mzi_elements'][0]['v_theta'], "V")
-```
 import json
 
 # Load raw electromagnetic field matrices
