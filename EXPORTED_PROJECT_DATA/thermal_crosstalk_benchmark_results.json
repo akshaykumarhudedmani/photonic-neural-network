@@ -1,0 +1,26 @@
+{
+  "novelty": "Thermal Crosstalk-Aware Training (TCAT) & Inverse Thermal Decoupling (ITD)",
+  "author": "Akshay Kumar Hudeedmani",
+  "optical_platform": "SOI 220nm strip waveguide (neff=2.3505, L_3dB=34.73um)",
+  "thermal_decay_length_um": 35.0,
+  "max_inter_mzi_thermal_bleed_pct": 20.1,
+  "benchmarks": {
+    "case_1_ideal_baseline": 73.7,
+    "case_2_unaware_crosstalk_crash": {
+      "mean": 23.16,
+      "std": 1.44,
+      "accuracy_loss_pct": 50.54
+    },
+    "case_3_inverse_thermal_decoupling_ITD": {
+      "mean": 72.41,
+      "std": 1.42,
+      "recovery_gain_pct": 49.25
+    },
+    "case_4_thermal_crosstalk_aware_training_TCAT": {
+      "mean": 70.35,
+      "std": 0.82,
+      "recovery_gain_pct": 47.19,
+      "variance_reduction_pct": 43.2
+    }
+  }
+}

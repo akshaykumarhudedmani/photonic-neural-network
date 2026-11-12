@@ -82,5 +82,13 @@
     {
         "file": "step6_mnist_photonic_benchmark.py",
         "size_KB": 22.1
+    },
+    {
+        "file": "step7_thermal_crosstalk_mitigation.py",
+        "size_KB": 19.2
+    },
+    {
+        "file": "thermal_crosstalk_benchmark_results.json",
+        "size_KB": 0.8
     }
 ]

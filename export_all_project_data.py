@@ -73,7 +73,9 @@ files_to_export = [
     'step3_photonic_neural_network.py',
     'step4_generate_visualizations.py',
     'step5_interconnect_circuit.py',
-    'step6_mnist_photonic_benchmark.py'
+    'step6_mnist_photonic_benchmark.py',
+    'step7_thermal_crosstalk_mitigation.py',
+    'thermal_crosstalk_benchmark_results.json'
 ]
 
 print("\n2. Archiving all core project files into EXPORTED_PROJECT_DATA...")
