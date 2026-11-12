@@ -1,26 +1,75 @@
 {
-  "novelty": "Thermal Crosstalk-Aware Training (TCAT) & Inverse Thermal Decoupling (ITD)",
+  "title": "Finite-Element Thermal PDE Modeling, Multi-Scale Mesh Scaling, & TCAT Mitigation",
   "author": "Akshay Kumar Hudeedmani",
-  "optical_platform": "SOI 220nm strip waveguide (neff=2.3505, L_3dB=34.73um)",
-  "thermal_decay_length_um": 35.0,
-  "max_inter_mzi_thermal_bleed_pct": 20.1,
-  "benchmarks": {
-    "case_1_ideal_baseline": 73.7,
-    "case_2_unaware_crosstalk_crash": {
-      "mean": 23.16,
-      "std": 1.44,
-      "accuracy_loss_pct": 50.54
+  "pde_solver": {
+    "pde": "nabla \\cdot (k_eff \nabla T) - g_sink * (T - T_0) = -Q(x, y)",
+    "thermal_decay_length_um": 41.5,
+    "grid_resolution_um": 2.5,
+    "experimental_reference": "Milanizadeh et al., IEEE JSTQE 2019",
+    "pearson_r2_score": 0.9905167957576695,
+    "bleed_comparison": [
+      {
+        "pitch_um": 25.0,
+        "exp_pct": 48.5,
+        "pde_pct": 47.49915981271109
+      },
+      {
+        "pitch_um": 50.0,
+        "exp_pct": 20.4,
+        "pde_pct": 23.37855338814681
+      },
+      {
+        "pitch_um": 75.0,
+        "exp_pct": 10.2,
+        "pde_pct": 11.715618208190195
+      },
+      {
+        "pitch_um": 100.0,
+        "exp_pct": 4.8,
+        "pde_pct": 5.9590815759687255
+      },
+      {
+        "pitch_um": 150.0,
+        "exp_pct": 1.2,
+        "pde_pct": 1.671865293758008
+      }
+    ]
+  },
+  "scalability_analysis": {
+    "4": {
+      "mzi_count": 6,
+      "condition_number": 1.1872433423995972,
+      "inversion_residual": 2.23215301258384e-07,
+      "die_span_x_um": 300.0,
+      "die_span_y_um": 100.0
     },
-    "case_3_inverse_thermal_decoupling_ITD": {
-      "mean": 72.41,
-      "std": 1.42,
-      "recovery_gain_pct": 49.25
+    "8": {
+      "mzi_count": 28,
+      "condition_number": 1.3586450815200806,
+      "inversion_residual": 2.5404480747663236e-07,
+      "die_span_x_um": 700.0,
+      "die_span_y_um": 300.0
     },
-    "case_4_thermal_crosstalk_aware_training_TCAT": {
-      "mean": 70.35,
-      "std": 0.82,
-      "recovery_gain_pct": 47.19,
-      "variance_reduction_pct": 43.2
+    "16": {
+      "mzi_count": 120,
+      "condition_number": 1.4266390800476074,
+      "inversion_residual": 7.458798925013274e-07,
+      "die_span_x_um": 1500.0,
+      "die_span_y_um": 700.0
+    }
+  },
+  "robustness_benchmarks": {
+    "mesh_4x4_4class": {
+      "ideal_pct": 72.6,
+      "unaware_crash_pct": 71.8,
+      "itd_restored_pct": 73.1,
+      "tcat_optimal_pct": 75.2
+    },
+    "mesh_16x16_10class": {
+      "ideal_pct": 71.0,
+      "unaware_crash_pct": 17.3,
+      "itd_restored_pct": 70.1,
+      "tcat_optimal_pct": 62.2
     }
   }
 }

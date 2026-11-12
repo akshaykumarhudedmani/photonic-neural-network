@@ -85,10 +85,10 @@
     },
     {
         "file": "step7_thermal_crosstalk_mitigation.py",
-        "size_KB": 19.2
+        "size_KB": 26.8
     },
     {
         "file": "thermal_crosstalk_benchmark_results.json",
-        "size_KB": 0.8
+        "size_KB": 2.0
     }
 ]
