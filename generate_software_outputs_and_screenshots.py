@@ -35,7 +35,7 @@ def generate_fig01_waveguide_fde():
     import lumapi
     m = lumapi.MODE(hide=False)
     try:
-        m.load(os.path.abspath("2nd.lms"))
+        m.load(os.path.abspath("single_waveguide_500x220.lms"))
         # Export CAD snapshot
         raw_cad = os.path.join(out_dir, "raw_cad_waveguide.png").replace("\\", "/")
         m.eval(f'exportview("{raw_cad}");')
@@ -75,7 +75,7 @@ def generate_fig01_waveguide_fde():
         img_cropped = img_cad.crop((int(w*0.05), int(h*0.08), int(w*0.95), int(h*0.92)))
         ax1.imshow(img_cropped)
     ax1.axis('off')
-    ax1.set_title("(a) Lumerical CAD Cross-Section (2nd.lms)\nSi Core (500x220nm) on SiO2 Substrate",
+    ax1.set_title("(a) Lumerical CAD Cross-Section\nSi Core (500x220nm) on SiO2 Substrate",
                   color='white', fontsize=11, fontweight='bold', pad=10)
 
     # Panel B: Real FDE Eigenmode Field Intensity |E|^2

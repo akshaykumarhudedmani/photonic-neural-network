@@ -74,7 +74,7 @@ This repository presents an **end-to-end, physics-calibrated hardware-software c
 ## 📷 Publication Figures & Hardware Verification
 
 ### Figure 1: Waveguide FDE Eigenmode & Dispersion Analysis
-*Extracted from Ansys Lumerical MODE (`2nd.lms`)*
+*Extracted from Ansys Lumerical MODE (`single_waveguide_500x220.lms`)*
 
 ![Waveguide FDE Mode Profile and Dispersion](SOFTWARE_SCREENSHOTS_AND_OUTPUTS/01_waveguide_fde_mode_profile.png)
 
@@ -162,31 +162,40 @@ $$P_\pi = \frac{\lambda \cdot k \cdot A}{\frac{dn}{dT} \cdot L} = 18.42\text{ mW
 ## 📂 Repository File Structure
 
 ```
-├── EXPORTED_PROJECT_DATA/            # Universal self-contained data archive
+├── EXPORTED_PROJECT_DATA/            # Universal self-contained data archive (Zero-License)
 │   ├── clements_mesh_4x4.s4p         # 4-Port Touchstone S-parameter file (ADS / Cadence / Python)
 │   ├── raw_fde_waveguide_fields.npz  # Raw 2D E/H electromagnetic field matrices
 │   ├── raw_coupler_supermode_fields.npz # Raw supermode field tensors
 │   ├── hardware_database.json        # Calibrated foundry parameters (w, h, neff, ng, loss, dn/dT)
+│   ├── hardware_specs.json           # Extracted core specifications
 │   ├── compiled_optical_layer.json   # Clements MZI angles (theta, phi) & heater voltages
 │   ├── interconnect_sparams.json     # S-parameters across 1500 - 1600 nm
-│   ├── mnist_benchmark_results.json  # Full numerical accuracy, latency, and energy metrics
-│   ├── 1stproject.lms                # Native Lumerical MODE CAD file (Waveguide cross-section)
-│   ├── 2nd.lms                       # Native Lumerical MODE FDE solver project
-│   ├── directional_coupler_50_50.lms # Native Lumerical MODE Coupler project
-│   ├── clements_mesh_4x4.icp         # Native Lumerical INTERCONNECT circuit project
+│   ├── mnist_benchmark_results.json  # PCA-4 linear benchmark metrics
+│   ├── high_accuracy_benchmark_results.json # 99.00% Deep Photonic CNN metrics & confusion matrix
+│   ├── waveguide_dispersion_sweep.csv# Wavelength sweep dispersion table
+│   ├── coupler_gap_sweep.csv         # Supermode gap sweep table
+│   ├── single_waveguide_500x220.lms  # Native Lumerical MODE FDE model (Si 500x220nm strip)
+│   ├── directional_coupler_50_50.lms # Native Lumerical MODE 3dB coupler supermode model
+│   ├── clements_mesh_4x4.icp         # Native Lumerical INTERCONNECT 4x4 circuit project
 │   └── build_interconnect_mesh.lsf   # Lumerical script to auto-generate circuit
 ├── SOFTWARE_SCREENSHOTS_AND_OUTPUTS/ # High-resolution publication figures (300+ DPI)
 │   ├── 01_waveguide_fde_mode_profile.png
 │   ├── 02_directional_coupler_supermodes.png
 │   ├── 03_interconnect_circuit_schematic.png
 │   ├── 04_interconnect_transmission_spectra.png
-│   └── 05_mnist_photonic_neural_network_benchmarks.png
+│   ├── 05_mnist_photonic_neural_network_benchmarks.png
+│   └── 06_high_accuracy_photonic_cnn_benchmark.png
+├── single_waveguide_500x220.lms      # Base single-waveguide cross-section CAD
+├── directional_coupler_50_50.lms     # 3dB directional coupler CAD
+├── clements_mesh_4x4.icp             # 4-channel Clements optical mesh circuit
+├── clements_mesh_4x4.s4p             # 4-port Touchstone S-parameter dataset
 ├── step1_hardware_sweeps.py          # MODE Solutions FDE dispersion & gap characterization
 ├── step2_clements_compiler.py        # Clements SVD decomposition & MZI angle synthesis
 ├── step3_photonic_neural_network.py  # PyTorch optical forward pass & noise simulation
 ├── step4_generate_visualizations.py  # Scientific plotting & telemetry dashboard
 ├── step5_interconnect_circuit.py     # INTERCONNECT automation & S-parameter extraction
-├── step6_mnist_photonic_benchmark.py # End-to-end MNIST benchmark & HAT training
+├── step6_mnist_photonic_benchmark.py # Linear optical matrix baseline benchmark
+├── step7_high_accuracy_photonic_cnn.py # Deep Photonic CNN (99.00% verified test accuracy)
 ├── generate_software_outputs_and_screenshots.py # Master figure generator
 ├── export_all_project_data.py        # Project archiving & Touchstone S4P exporter
 ├── requirements.txt                  # Python dependencies
@@ -209,15 +218,32 @@ cd photonic-neural-network
 pip install -r requirements.txt
 ```
 
-### 3. Run the Standalone Photonic AI Benchmark (No Ansys License Required)
-The PyTorch neural engine reads the pre-calibrated physical Touchstone files and hardware database, allowing full reproduction of all benchmarks on any PC:
+### 3. Run the High-Accuracy Deep Photonic CNN (99.00% Test Accuracy)
+```bash
+python step7_high_accuracy_photonic_cnn.py
+```
+
+### 4. Run the Linear Unitary Optical Mesh Baseline
 ```bash
 python step6_mnist_photonic_benchmark.py
 ```
 
-### 4. Inspect Hardware Data & S-Parameters in Python
+### 5. Inspect Hardware Data & S-Parameters in Python (No License Needed)
 ```python
 import numpy as np
+import json
+
+# Load raw electromagnetic field matrices
+fde_data = np.load('EXPORTED_PROJECT_DATA/raw_fde_waveguide_fields.npz')
+print("FDE Effective Index:", fde_data['neff'])
+print("E-field Matrix Shape:", fde_data['E'].shape)
+
+# Load compiled optical chip configuration
+with open('EXPORTED_PROJECT_DATA/compiled_optical_layer.json') as f:
+    chip = json.load(f)
+print("Mesh Architecture:", chip['architecture'])
+print("MZI 1 Heater Voltage:", chip['mzi_elements'][0]['v_theta'], "V")
+```
 import json
 
 # Load raw electromagnetic field matrices

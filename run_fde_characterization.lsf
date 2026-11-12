@@ -1,7 +1,7 @@
 # Lumerical Script to characterize Waveguide, Coupler, and Phase Shifter
 # Output: hardware_specs.json
 
-load('2nd.lms');
+load('single_waveguide_500x220.lms');
 
 # 1. Single Waveguide Characterization (Fundamental TE mode)
 switchtolayout;

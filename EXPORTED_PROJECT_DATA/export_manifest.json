@@ -12,6 +12,10 @@
         "size_KB": 0.3
     },
     {
+        "file": "waveguide_dispersion_sweep.csv",
+        "size_KB": 4.1
+    },
+    {
         "file": "compiled_optical_layer.json",
         "size_KB": 4.7
     },
@@ -32,8 +36,8 @@
         "size_KB": 0.5
     },
     {
-        "file": "results_visualizations.png",
-        "size_KB": 575.6
+        "file": "high_accuracy_benchmark_results.json",
+        "size_KB": 0.7
     },
     {
         "file": "interconnect_simulation_results.png",
@@ -44,8 +48,20 @@
         "size_KB": 738.5
     },
     {
-        "file": "2nd.lms",
+        "file": "single_waveguide_500x220.lms",
         "size_KB": 451.8
+    },
+    {
+        "file": "directional_coupler_50_50.lms",
+        "size_KB": 2402.4
+    },
+    {
+        "file": "raw_fde_waveguide_fields.npz",
+        "size_KB": 124.3
+    },
+    {
+        "file": "raw_coupler_supermode_fields.npz",
+        "size_KB": 101.5
     },
     {
         "file": "step1_hardware_sweeps.py",
@@ -69,6 +85,10 @@
     },
     {
         "file": "step6_mnist_photonic_benchmark.py",
-        "size_KB": 21.9
+        "size_KB": 22.1
+    },
+    {
+        "file": "step7_high_accuracy_photonic_cnn.py",
+        "size_KB": 11.3
     }
 ]

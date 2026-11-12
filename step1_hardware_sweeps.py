@@ -21,7 +21,7 @@ def run_hardware_sweeps():
         # Part A: Single Waveguide Dispersion Sweep (1500 nm - 1600 nm)
         # -------------------------------------------------------------
         print("\n[A] Running Single Waveguide Wavelength Sweep (1500 nm -> 1600 nm)...")
-        base_file = os.path.join(workspace, "2nd.lms")
+        base_file = os.path.join(workspace, "single_waveguide_500x220.lms")
         mode.load(base_file)
         
         wavelengths = np.linspace(1.50e-6, 1.60e-6, 11)

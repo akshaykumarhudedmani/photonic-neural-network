@@ -12,6 +12,9 @@ ENV/
 # Large Datasets (Auto-downloaded by script)
 mnist_data/
 
+# Legacy diagnostics & scratch scripts
+legacy_diagnostics/
+
 # OS and IDE files
 .DS_Store
 Thumbs.db

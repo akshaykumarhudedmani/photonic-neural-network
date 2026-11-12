@@ -156,8 +156,9 @@ class CoherentPhotonicClassifier(nn.Module):
 def prepare_mnist_data():
     print("\n--- Loading Official Yann LeCun MNIST Dataset ---")
     transform = transforms.Compose([transforms.ToTensor()])
-    mnist_train = datasets.MNIST('./mnist_data', train=True, download=False, transform=transform)
-    mnist_test = datasets.MNIST('./mnist_data', train=False, download=False, transform=transform)
+    download_if_needed = not os.path.exists('./mnist_data/MNIST/raw/train-images-idx3-ubyte')
+    mnist_train = datasets.MNIST('./mnist_data', train=True, download=download_if_needed, transform=transform)
+    mnist_test = datasets.MNIST('./mnist_data', train=False, download=download_if_needed, transform=transform)
     
     # Filter for 4 classes: 0, 1, 2, 3 (Standard 4-channel photonic benchmark)
     classes = [0, 1, 2, 3]

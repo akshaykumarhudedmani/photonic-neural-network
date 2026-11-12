@@ -56,21 +56,26 @@ files_to_export = [
     'hardware_database.json',
     'hardware_specs.json',
     'coupler_gap_sweep.csv',
+    'waveguide_dispersion_sweep.csv',
     'compiled_optical_layer.json',
     'clements_mesh_4x4.icp',
     'build_interconnect_mesh.lsf',
     'interconnect_sparams.json',
     'mnist_benchmark_results.json',
-    'results_visualizations.png',
+    'high_accuracy_benchmark_results.json',
     'interconnect_simulation_results.png',
     'mnist_photonic_benchmark.png',
-    '2nd.lms',
+    'single_waveguide_500x220.lms',
+    'directional_coupler_50_50.lms',
+    'raw_fde_waveguide_fields.npz',
+    'raw_coupler_supermode_fields.npz',
     'step1_hardware_sweeps.py',
     'step2_clements_compiler.py',
     'step3_photonic_neural_network.py',
     'step4_generate_visualizations.py',
     'step5_interconnect_circuit.py',
-    'step6_mnist_photonic_benchmark.py'
+    'step6_mnist_photonic_benchmark.py',
+    'step7_high_accuracy_photonic_cnn.py'
 ]
 
 print("\n2. Archiving all core project files into EXPORTED_PROJECT_DATA...")
