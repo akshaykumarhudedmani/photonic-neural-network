@@ -8,7 +8,14 @@
 [![Energy Efficiency](https://img.shields.io/badge/Energy-%3C0.85%20fJ%2FMAC-success.svg)]()
 [![Experimental Validation](https://img.shields.io/badge/Milanizadeh%20et%20al.%202019-R%5E2%20%3D%200.9905-success.svg)]()
 
-> **Author**: Akshay Kumar Hudeedmani  
+> ### 👥 Interdisciplinary Project Authors & Engineering Synergy
+> * **Akshay Kumar Hudedmani** ([@akshaykumarhudedmani](https://github.com/akshaykumarhudedmani)) — **Computer Science & Engineering (CSE Student)**  
+>   *Photonic AI Compiler, Hardware-Aware Training (HAT), SVD Clements Optical Decompositions, Inverse Thermal Decoupling (ITD), & TCAT Backpropagation Engine.*
+> * **Taniya Sana** ([@tanyasana](https://github.com/tanyasana)) — **Electronics & Communication Engineering (ECE Student)**  
+>   *Nanophotonic Silicon Waveguide FDE Mode Solving, Directional Coupler Supermode Analysis ($L_{3\text{dB}} = 34.73\ \mu\text{m}$), Optical Circuit Synthesis in Ansys INTERCONNECT, Touchstone S-Parameter Characterization, & Continuous 2D Heat Diffusion PDE Modeling.*
+> 
+> *This project is a 100% combined, joint interdisciplinary co-design where nanophotonic electromagnetic hardware physics (ECE) and differentiable optical machine learning algorithms (CSE) were built symbiotically. Neither could be achieved without the other.*
+> 
 > **Platform**: Silicon-on-Insulator (SOI) $220\text{ nm}$ Nanophotonics  
 > **Architecture**: Generalized $N \times N$ Clements Unitary Mesh ($N=4, 8, 16$; up to 120 MZIs) with 2D FEM Heat Diffusion Modeling  
 > **Repository**: [https://github.com/akshaykumarhudedmani/photonic-neural-network](https://github.com/akshaykumarhudedmani/photonic-neural-network)
@@ -302,9 +309,9 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 If you find this codebase, 2D PDE thermal model, or TCAT/ITD algorithms helpful in your research, please cite:
 
 ```bibtex
-@article{hudedmani2026thermal,
-  author       = {Akshay Kumar Hudeedmani},
-  title        = {Thermal Crosstalk-Aware Co-Design and Scalable Unitary Meshes for Silicon Photonic Neural Processors},
+@article{hudedmani_sana_2026_photonic,
+  author       = {Akshay Kumar Hudedmani and Taniya Sana},
+  title        = {Thermal Crosstalk-Aware Co-Design and Scalable Unitary Meshes for Silicon Photonic Neural Processors: An Interdisciplinary CSE-ECE Approach},
   journal      = {arXiv preprint / GitHub Repository},
   year         = {2026},
   publisher    = {GitHub},

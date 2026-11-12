@@ -1,6 +1,20 @@
 {
   "title": "Finite-Element Thermal PDE Modeling, Multi-Scale Mesh Scaling, & TCAT Mitigation",
-  "author": "Akshay Kumar Hudeedmani",
+  "authors": [
+    {
+      "name": "Akshay Kumar Hudedmani",
+      "department": "Computer Science & Engineering (CSE)",
+      "github": "https://github.com/akshaykumarhudedmani",
+      "role": "Photonic AI Compiler, HAT Algorithms, Inverse Thermal Decoupling (ITD), & TCAT Backpropagation Engine"
+    },
+    {
+      "name": "Taniya Sana",
+      "department": "Electronics & Communication Engineering (ECE)",
+      "github": "https://github.com/tanyasana",
+      "role": "Electromagnetic Wave Solver, FDE Supermodes, INTERCONNECT Circuit Synthesis, & 2D PDE Heat Diffusion Modeling"
+    }
+  ],
+  "collaboration_model": "Equal Joint Authorship (Interdisciplinary CSE + ECE Hardware-Software Co-Design)",
   "pde_solver": {
     "pde": "nabla \\cdot (k_eff \nabla T) - g_sink * (T - T_0) = -Q(x, y)",
     "thermal_decay_length_um": 41.5,

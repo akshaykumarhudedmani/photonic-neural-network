@@ -1,6 +1,17 @@
 """
 Step 6: MNIST Digit Classification Benchmark on Clements Photonic Neural Network
 ================================================================================
+Joint Authors:
+  - Akshay Kumar Hudedmani (Computer Science & Engineering - CSE)
+    GitHub: https://github.com/akshaykumarhudedmani
+  - Taniya Sana (Electronics & Communication Engineering - ECE)
+    GitHub: https://github.com/tanyasana
+
+Interdisciplinary Co-Design:
+  - ECE Contribution: Calibrated optical waveguide loss, directional coupler transfer
+    matrices, and physical thermo-optic phase shift noise models.
+  - CSE Contribution: Differentiable optical PyTorch architecture, singular value
+    decomposition compiler, and Hardware-Aware Training (HAT) backpropagation algorithms.
 Benchmarks a physical 4-channel coherent Photonic Integrated Circuit (PIC) on MNIST.
 - Architecture: 4-channel Clements Unitary Mesh U (6 MZIs) -> Optical Attenuation Sigma -> Clements Mesh V^dagger (6 MZIs) -> Photodetectors
 - Dataset: Official Yann LeCun MNIST (digits 0, 1, 2, 3) with optical feature projection

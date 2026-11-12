@@ -2,7 +2,25 @@
 Step 7: Physical 2D PDE Thermal Heat Solver, Multi-Scale Clements Mesh (N=4, 8, 16),
         and Thermal Crosstalk-Aware Training (TCAT) / Inverse Thermal Decoupling (ITD)
 ======================================================================================
-Author: Akshay Kumar Hudeedmani
+Joint Authors:
+  - Akshay Kumar Hudedmani (Computer Science & Engineering - CSE)
+    GitHub: https://github.com/akshaykumarhudedmani
+  - Taniya Sana (Electronics & Communication Engineering - ECE)
+    GitHub: https://github.com/tanyasana
+
+Interdisciplinary Co-Design Synergy:
+  - ECE Contribution (Taniya Sana):
+    * Silicon nanophotonics waveguide electromagnetic mode characterization (MODE FDE).
+    * Directional coupler supermode index split and 3 dB coupling length (L_3dB = 34.73 um).
+    * 4-channel Clements optical mesh circuit schematic synthesis in Ansys INTERCONNECT.
+    * Touchstone S-parameter broadband scattering analysis (clements_mesh_4x4.s4p).
+    * Continuous 2D Finite-Difference Poisson-Helmholtz PDE thermal diffusion solver (38,801 nodes).
+  - CSE Contribution (Akshay Kumar Hudedmani):
+    * Hardware-Aware Training (HAT) stochastic optimization algorithms.
+    * Singular Value Decomposition (SVD) Clements unitary matrix compiler & angle synthesis.
+    * Inverse Thermal Decoupling (ITD) closed-form matrix pre-distortion (P_drive = H^-1 * theta).
+    * Thermal Crosstalk-Aware Training (TCAT) backpropagation engine through coupling matrix H.
+    * Architectural scalability validation and Gershgorin stability proofs across N=4, 8, 16.
 Academic Context: IEEE Journal of Lightwave Technology / IEEE JSTQE Standards
 
 Core Scientific Innovations:
@@ -458,7 +476,21 @@ def run_benchmark():
     # 4. Save Comprehensive JSON
     results = {
         "title": "Finite-Element Thermal PDE Modeling, Multi-Scale Mesh Scaling, & TCAT Mitigation",
-        "author": "Akshay Kumar Hudeedmani",
+        "authors": [
+            {
+                "name": "Akshay Kumar Hudedmani",
+                "department": "Computer Science & Engineering (CSE)",
+                "github": "https://github.com/akshaykumarhudedmani",
+                "role": "Photonic AI Compiler, HAT Algorithms, Inverse Thermal Decoupling (ITD), & TCAT Backpropagation Engine"
+            },
+            {
+                "name": "Taniya Sana",
+                "department": "Electronics & Communication Engineering (ECE)",
+                "github": "https://github.com/tanyasana",
+                "role": "Electromagnetic Wave Solver, FDE Supermodes, INTERCONNECT Circuit Synthesis, & 2D PDE Heat Diffusion Modeling"
+            }
+        ],
+        "collaboration_model": "Equal Joint Authorship (Interdisciplinary CSE + ECE Hardware-Software Co-Design)",
         "pde_solver": {
             "pde": "nabla \cdot (k_eff \nabla T) - g_sink * (T - T_0) = -Q(x, y)",
             "thermal_decay_length_um": pde_res["L_th"],

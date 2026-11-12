@@ -1,6 +1,11 @@
 """
 Step 5: Circuit-Level Optical Simulation (Ansys Lumerical INTERCONNECT)
 ========================================================================
+Joint Authors:
+  - Akshay Kumar Hudedmani (Computer Science & Engineering - CSE)
+    GitHub: https://github.com/akshaykumarhudedmani
+  - Taniya Sana (Electronics & Communication Engineering - ECE)
+    GitHub: https://github.com/tanyasana
 Simulates the compiled 4-channel Clements MZI optical circuit.
 - Generates the complete Lumerical INTERCONNECT script: build_interconnect_mesh.lsf
 - Attempts live execution via lumapi.INTERCONNECT (creating clements_mesh_4x4.icp)

@@ -1,3 +1,13 @@
+"""
+Step 3: Differentiable Photonic Neural Network in PyTorch
+=========================================================
+Joint Authors:
+  - Akshay Kumar Hudedmani (Computer Science & Engineering - CSE)
+    GitHub: https://github.com/akshaykumarhudedmani
+  - Taniya Sana (Electronics & Communication Engineering - ECE)
+    GitHub: https://github.com/tanyasana
+"""
+
 import json
 import torch
 import torch.nn as nn

@@ -1,3 +1,13 @@
+"""
+Step 2: Clements Unitary Mesh Compiler & SVD Phase Shift Decomposer
+====================================================================
+Joint Authors:
+  - Akshay Kumar Hudedmani (Computer Science & Engineering - CSE)
+    GitHub: https://github.com/akshaykumarhudedmani
+  - Taniya Sana (Electronics & Communication Engineering - ECE)
+    GitHub: https://github.com/tanyasana
+"""
+
 import json
 import numpy as np
 

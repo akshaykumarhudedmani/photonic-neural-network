@@ -61,15 +61,15 @@
     },
     {
         "file": "step1_hardware_sweeps.py",
-        "size_KB": 7.0
+        "size_KB": 7.4
     },
     {
         "file": "step2_clements_compiler.py",
-        "size_KB": 7.0
+        "size_KB": 7.4
     },
     {
         "file": "step3_photonic_neural_network.py",
-        "size_KB": 9.0
+        "size_KB": 9.3
     },
     {
         "file": "step4_generate_visualizations.py",
@@ -77,18 +77,18 @@
     },
     {
         "file": "step5_interconnect_circuit.py",
-        "size_KB": 14.1
+        "size_KB": 14.3
     },
     {
         "file": "step6_mnist_photonic_benchmark.py",
-        "size_KB": 22.1
+        "size_KB": 22.6
     },
     {
         "file": "step7_thermal_crosstalk_mitigation.py",
-        "size_KB": 26.8
+        "size_KB": 28.8
     },
     {
         "file": "thermal_crosstalk_benchmark_results.json",
-        "size_KB": 2.0
+        "size_KB": 2.6
     }
 ]

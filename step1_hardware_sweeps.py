@@ -1,3 +1,13 @@
+"""
+Step 1: Automated ECE Hardware Parametric Sweeps in Ansys Lumerical MODE
+======================================================================
+Joint Authors:
+  - Akshay Kumar Hudedmani (Computer Science & Engineering - CSE)
+    GitHub: https://github.com/akshaykumarhudedmani
+  - Taniya Sana (Electronics & Communication Engineering - ECE)
+    GitHub: https://github.com/tanyasana
+"""
+
 import os
 import sys
 import json
