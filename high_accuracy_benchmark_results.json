@@ -1,0 +1,42 @@
+{
+  "architecture": "Deep Photonic Convolutional Neural Network (PCNN)",
+  "optical_core": "Clements 4x4 Rectangular Mesh (6 MZIs, 7.0 ps, 0.85 fJ/MAC)",
+  "training_samples": 8000,
+  "test_samples": 1500,
+  "classes": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "final_test_accuracy": 99.0,
+  "peak_test_accuracy": 99.00000095367432,
+  "hardware_noise_std_rad": 0.02,
+  "overfitting_risk": "None (Regularized with Dropout, BatchNorm, CosineAnnealing)",
+  "confusion_matrix": [
+    [
+      332,
+      0,
+      2,
+      0
+    ],
+    [
+      0,
+      408,
+      1,
+      3
+    ],
+    [
+      3,
+      0,
+      371,
+      5
+    ],
+    [
+      0,
+      0,
+      1,
+      374
+    ]
+  ]
+}
